@@ -426,7 +426,7 @@ namespace MinerWars.AppCode.Game.Voxels
                 */
 
                 // Voxel ambient occlusion
-                const int VOXELS_CHECK_COUNT = 1;
+                const int VOXELS_CHECK_COUNT = 2;
                 for (int ambientX = -VOXELS_CHECK_COUNT; ambientX <= VOXELS_CHECK_COUNT; ambientX++)
                 {
                     for (int ambientY = -VOXELS_CHECK_COUNT; ambientY <= VOXELS_CHECK_COUNT; ambientY++)
@@ -449,7 +449,7 @@ namespace MinerWars.AppCode.Game.Voxels
                                 }
                                 else
                                 {
-                                    //  IMPORTANT: We trace 3x3x3 voxels around our voxel. So when dividng to get <0..1> interval, divide by this number.
+                                //  IMPORTANT: We trace 5x5x5 voxels around our voxel. So when dividng to get <0..1> interval, divide by this number.
                                     ambient += m_voxelMap.GetVoxelContent(ref tmpVoxelCoord);
                                 }
                             }
@@ -457,7 +457,7 @@ namespace MinerWars.AppCode.Game.Voxels
                     }
                 }
 
-                //  IMPORTANT: We trace 3x3x3 voxels around our voxel. So when dividng to get <0..1> interval, divide by this number.
+                //  IMPORTANT: We trace 5x5x5 voxels around our voxel. So when dividng to get <0..1> interval, divide by this number.
                 ambient /= MyVoxelConstants.VOXEL_CONTENT_FULL_FLOAT * (VOXELS_CHECK_COUNT * 2 + 1) * (VOXELS_CHECK_COUNT * 2 + 1) * (VOXELS_CHECK_COUNT * 2 + 1);
 
                 //  Flip the number, so from now dark voxels are 0.0 and light are 1.0
